@@ -1,0 +1,17 @@
+user1 = {
+    'name': 'Sorna',
+    'valid': True #in case this changes to false, the message  will not be printed.
+}
+
+def authenticated(fn):
+  def wrapper(*args, **kwargs):
+    if user1['valid']:
+      return fn(*args, **kwargs)
+  return wrapper
+  
+
+@authenticated
+def message_friends(user):
+    print('message has been sent')
+
+message_friends(user1)
